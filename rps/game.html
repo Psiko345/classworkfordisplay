@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+
+        function getRandomInt(anything) {
+            return Math.floor(Math.random() * anything);
+        }
+
+        function calculateResult(userChoice, computerChoice) {
+
+            if (userChoice == computerChoice)
+                return "draw";
+
+            if (userChoice == "rock") {
+                if (computerChoice == "paper")
+                    return "computer"
+                if (computerChoice == "scissors")
+                    return "player"
+                return "BAD-RESULT"
+            } else if (userChoice == "scissors") {
+                if (computerChoice == "rock")
+                    return "computer"
+                if (computerChoice == "paper")
+                    return "player"
+                return "BAD-RESULT"
+            } else if (userChoice == "paper") {
+                if (computerChoice == "scissors")
+                    return "computer"
+                if (computerChoice == "rock")
+                    return "player"
+                return "BAD-RESULT"
+            }
+            return whateverResult;
+        }
+
+        let choice = ["rock", "paper", "scissors"]
+        let userScore = 0
+        let computerScore = 0
+        let drawScore = 0
+
+        while (true) {
+
+            // Get user's choice
+            let userChoice = prompt("Let's play a game of rock, paper, scissors! ")
+            if (userChoice == "quit")
+                break;
+
+            // Calculate the computer choice
+            let numberOfChoices = choice.length
+            let compChoice = choice[getRandomInt(numberOfChoices)]
+            console.log(compChoice);
+
+            // Calculate result
+            let result = calculateResult(userChoice, compChoice)
+
+            // Change score
+            if (result == "player") {
+                 userScore = userScore + 1
+            }
+            if (result == "computer") {
+                 computerScore = computerScore + 1
+            }
+            if (result == "draw") {
+                drawScore = drawScore + 1
+            }
+            // Display results
+            if (result == "player") {
+                alert ("Player chose " + userChoice + " . Player won, Player score is: " + userScore + " . Computer score is: " + computerScore + "Draw score is: " + drawScore)
+            }
+
+            if (result == "computer") {
+                alert ("Computer chose " + compChoice + " . Computer won, Player score is: " + userScore + " . Computer score is: " + computerScore + "Draw score is: " + drawScore)
+            
+            }
+            if (result == "draw") {
+                alert ("Computer chose " + compChoice + " . It was a draw, Player score is: " + userScore + " . Computer score is: " + computerScore + "Draw score is: " + drawScore )
+            }
+        }
+
+
+        // SHOW FINAL RESULT
+        alert ("Player score is: " + userScore + " . Computer score is: " + computerScore)
+        if (userScore > computerScore) {
+            alert("Congratulations! You won!")
+        } else if (userScore == computerScore) { 
+            alert("Good lord, you drew...that's like a million to one!")
+        } else {
+            alert("Commiserations! You lost!")
+
+        }
+
+    </script>
+</body>
+
+</html>
